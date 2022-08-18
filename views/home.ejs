@@ -1,0 +1,22 @@
+ <%- include("header") %>
+   <div class="container">
+     <%if(T.length==0){%>
+       </br>
+       <h1>Oops! ther's nothing here</h1></br>
+       <h2>Go to compose section to add something</h2>
+       <% } %>
+     <% for(var i=0; i<T.length; i++){ %>
+       <h1 class="title" ><%= (T[i].title) %> %></h1>
+       <form action="/delete" method="post">
+         <input class="dicon" type="image" src="delete.png">
+         <input type="hidden" name="t" value="<%= T[i].title %>">
+       </form>
+
+       <p class="para">
+         <%= (T[i].post).slice(0,100) + "..." %> %>
+         <a class="rm" href="/posts/<%= T[i].title %>">Read more</a>
+       </p>
+     <% } %>
+   </div>
+
+<%- include("footer") %>
